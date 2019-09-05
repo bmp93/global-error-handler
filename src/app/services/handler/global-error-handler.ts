@@ -16,7 +16,6 @@ export class GlobalErrorHandler implements ErrorHandler {
   ) { }
 
   handleError(error: any) {
-    debugger
     let message;
     if (error instanceof HttpErrorResponse) {
       // Server error
@@ -35,7 +34,7 @@ export class GlobalErrorHandler implements ErrorHandler {
       this.notifier.showError(message);
     }
     // Always log errors
-    // this.slackService.postErrorOnSlack(error);
+    this.slackService.postErrorOnSlack(error);
     console.log(error);
   }
 }
